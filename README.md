@@ -29,8 +29,8 @@ Before proceeding, ensure the following software is installed on your system:
 
     - Open your terminal and run:
       ```bash
-      git clone <repository_url>
-      cd <repository_name>
+      git clone git@github.com:jhonnykhadra/docupet_test.git
+      cd docupet_test
       ```
 
 2. **Install Dependencies Locally (Optional)**
