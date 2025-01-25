@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Symfony App{% endblock %}</title>
+    {{ encore_entry_link_tags('app') }} {# Include CSS #}
+</head>
+<body>
+<header class="site-header">
+    <div class="logo-container">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="site-logo">
+    </div>
+    <nav class="main-menu">
+        <a href="#" class="menu-option">Help</a>
+        <a href="#" class="menu-option">Save and Finish Later</a>
+    </nav>
+</header>
+<main class="site-content">
+    {% block body %}
+        {{ component('PetFormComponent') }}
+    {% endblock %}
+</main>
+{{ encore_entry_script_tags('app') }} {# Include JS #}
+
+</body>
+</html>

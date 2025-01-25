@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    container_name: symfony_mysql
+    restart: always
+    ports:
+      - "3307:3306" # Use port 3307 to avoid conflicts with default MySQL port
+    environment:
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80" # Map container's Apache port 8080 to localhost port 8081
+    volumes:
+      - .:/var/www/html
+      - ./var:/var/www/html/var
+    environment:
+      APP_ENV: dev
+    depends_on:
+      - db
+
+
+networks:
+  app-network:
+    driver: bridge
+
+
+volumes:
+  mysql-data:

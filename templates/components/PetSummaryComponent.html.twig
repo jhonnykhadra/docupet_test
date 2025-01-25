@@ -1,0 +1,16 @@
+<div {{ attributes }}  class="max-w-lg mx-auto bg-white p-6 shadow-md rounded-lg">
+    {% if pet %}
+        <h2 class="text-2xl font-bold text-blue-600 mb-4">Pet Summary</h2>
+        <p><strong>Name:</strong> {{ pet.name }}</p>
+        <p><strong>Type:</strong> {{ pet.breed.type }}</p>
+        <p><strong>Breed:</strong> {{ pet.breed.name }}</p>
+        <p><strong>Dangerous:</strong> {{ pet.breed.isDangerous ? 'Yes' : 'No' }}</p>
+        <p><strong>Gender:</strong> {{ pet.gender }}</p>
+        {% if pet.dateOfBirth %}
+            <p><strong>Date of Birth:</strong> {{ pet.dateOfBirth|date('Y-m-d') }}</p>
+        {% else %}
+            <p><strong>Approximate Age:</strong> {{ pet.approximateAge }} years</p>
+        {% endif %}
+
+    {% endif %}
+</div>
