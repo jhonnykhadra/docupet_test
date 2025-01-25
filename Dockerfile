@@ -43,14 +43,13 @@ RUN composer install --no-scripts --no-progress --prefer-dist
 RUN npm install && npm run build
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public /var/www/html/vendor
 
 COPY  docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Set the entrypoint script
-#ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 
 # Expose default web server port

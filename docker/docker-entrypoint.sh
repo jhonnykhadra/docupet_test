@@ -13,3 +13,8 @@ php bin/console doctrine:migrations:migrate --no-interaction
 
 php bin/console doctrine:fixtures:load --no-interaction
 # Start Apache
+php bin/console cache:clear
+
+chown -R www-data:www-data /var/www/html/var /var/www/html/public /var/www/html/vendor
+
+exec apache2-foreground
